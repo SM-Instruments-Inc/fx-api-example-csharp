@@ -39,10 +39,66 @@ This is a C# library that enables seamless integration with cameras using both R
    - `OpenCvSharp`
    - `Google.Protobuf`
    - `Websocket.Client`
+4. Move dll files from `gui-example\win-x64` or `gui-example\win-arm64` to your project.
+ Folder structure should be same with origin, such as `{YOUR_PROJECT}\win-64` or `{YOUR_PROJECT}\win-arm64`
+5. Open your project's csproj file and add following items.
+ ```csproj
+<ItemGroup>
+  <ARM64Binaries Include="win-arm64\**" />
+  <X64Binaries Include="win-x64\**" />
+</ItemGroup>
+
+<Target Name="AfterBuildARM" AfterTargets="Build" Condition=" '$(Platform)' == 'ARM64' ">
+  <Message Text="Copying ARM64 Binaries..." Importance="High" />
+  <Copy SourceFiles="@(ARM64Binaries)" DestinationFolder="$(OutDir)" />
+  <Message Text="Cleaning up Unsupported Architecture Dependencies..." Importance="High" />
+  <RemoveDir Directories="$(OutDir)\runtimes\win-x64" />
+  <RemoveDir Directories="$(OutDir)\runtimes\win-x86" />
+  <RemoveDir Directories="$(OutDir)\runtimes\win10-x64" />
+  <RemoveDir Directories="$(OutDir)\runtimes\win10-x86" />
+</Target>
+
+<Target Name="AfterPublishARM" AfterTargets="Publish" Condition=" '$(Platform)' == 'ARM64' ">
+  <Message Text="Copying ARM64 Binaries..." Importance="High" />
+  <Copy SourceFiles="@(ARM64Binaries)" DestinationFolder="$(PublishDir)" />
+  <Message Text="Cleaning up Unsupported Architecture Dependencies..." Importance="High" />
+  <RemoveDir Directories="$(PublishDir)\runtimes\win-x64" />
+  <RemoveDir Directories="$(PublishDir)\runtimes\win-x86" />
+  <RemoveDir Directories="$(PublishDir)\runtimes\win10-x64" />
+  <RemoveDir Directories="$(PublishDir)\runtimes\win10-x86" />
+  <RemoveDir Directories="$(LinuxPublishRuntimeDirs)*" />
+</Target>
+
+<Target Name="AfterBuildX64" AfterTargets="Build" Condition=" '$(Platform)' == 'x64' ">
+  <Message Text="Copying X64 Binaries..." Importance="High" />
+  <Copy SourceFiles="@(X64Binaries)" DestinationFolder="$(OutDir)" />
+  <Message Text="Cleaning up Unsupported Architecture Dependencies..." Importance="High" />
+  <RemoveDir Directories="$(OutDir)\runtimes\win-arm64" />
+  <RemoveDir Directories="$(OutDir)\runtimes\win-x86" />
+  <RemoveDir Directories="$(OutDir)\runtimes\win10-arm64" />
+  <RemoveDir Directories="$(OutDir)\runtimes\win10-x86" />
+  <RemoveDir Directories="$(OutDir)\runtimes\linux**" />
+</Target>
+<Target Name="AfterPublishX64" AfterTargets="Publish" Condition=" '$(Platform)' == 'x64' ">
+  <Message Text="Copying X64 Binaries..." Importance="High" />
+  <Copy SourceFiles="@(X64Binaries)" DestinationFolder="$(PublishDir)" />
+  <Message Text="Cleaning up Unsupported Architecture Dependencies..." Importance="High" />
+  <RemoveDir Directories="$(PublishDir)\runtimes\win-arm64" />
+  <RemoveDir Directories="$(PublishDir)\runtimes\win-x86" />
+  <RemoveDir Directories="$(PublishDir)\runtimes\win10-arm64" />
+  <RemoveDir Directories="$(PublishDir)\runtimes\win10-x86" />
+  <RemoveDir Directories="$(PublishDir)\runtimes\linux**" />
+</Target>
+ ```
+6. Make sure you make to copy dll files when it's new. To make it copy to out directory:
+  6-1. Select dll files from your Solution Explorer
+  6-2. Open Properties, Change **Copy to Output Directory** value to `PreserveNewest`
 
 ---
 
 ## Usage
+
+You could refer to gui-example code for example.
 
 ### Initialize Camera Connection
 
