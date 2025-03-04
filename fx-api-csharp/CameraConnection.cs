@@ -55,8 +55,8 @@ public class CameraConnection(Camera camera) : IDisposable
     {
         if (_rtspClient != null) throw new InvalidOperationException("Already connected or connecting to the camera.");
 
-        await InitializeRtspClientAsync();
         await InitializeWebSocketAsync();
+        await InitializeRtspClientAsync();
     }
 
     /// <summary>
