@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="gui_example.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:gui_example"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="gui-example"
+    mc:Ignorable="d">
+
+    <Grid
+        Margin="10"
+        Padding="10"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+        <Image
+            x:Name="ImgVideo"
+            Width="640"
+            Height="480"
+            HorizontalAlignment="Center" />
+        <Image
+            x:Name="ImgBeamforming"
+            Width="640"
+            Height="480"
+            HorizontalAlignment="Center"
+            Opacity="0.5" />
+    </Grid>
+</Window>

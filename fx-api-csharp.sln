@@ -9,6 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RtspClientSharp", "Dependencies\RtspClientSharp\RtspClientSharp.csproj", "{6C4EDB14-5C36-B1B6-59B2-0008D5799879}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gui-example", "gui-example\gui-example.csproj", "{CBBEF7D3-41AD-47CD-9E0B-38B0A0612E89}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "솔루션 항목", "솔루션 항목", "{F1F2A5E0-3614-4385-A941-A148300F7F4A}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +30,12 @@ Global
 		{6C4EDB14-5C36-B1B6-59B2-0008D5799879}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C4EDB14-5C36-B1B6-59B2-0008D5799879}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C4EDB14-5C36-B1B6-59B2-0008D5799879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBBEF7D3-41AD-47CD-9E0B-38B0A0612E89}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{CBBEF7D3-41AD-47CD-9E0B-38B0A0612E89}.Debug|Any CPU.Build.0 = Debug|x64
+		{CBBEF7D3-41AD-47CD-9E0B-38B0A0612E89}.Debug|Any CPU.Deploy.0 = Debug|x64
+		{CBBEF7D3-41AD-47CD-9E0B-38B0A0612E89}.Release|Any CPU.ActiveCfg = Release|x64
+		{CBBEF7D3-41AD-47CD-9E0B-38B0A0612E89}.Release|Any CPU.Build.0 = Release|x64
+		{CBBEF7D3-41AD-47CD-9E0B-38B0A0612E89}.Release|Any CPU.Deploy.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
